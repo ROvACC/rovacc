@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "core": "apps/core",
+    "core-interfaces": "libs/core-interfaces",
+    "ops": "apps/ops",
+    "ops-e2e": "apps/ops-e2e"
+  }
+}

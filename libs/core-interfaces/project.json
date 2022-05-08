@@ -1,0 +1,14 @@
+{
+  "sourceRoot": "libs/core-interfaces/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/core-interfaces/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
