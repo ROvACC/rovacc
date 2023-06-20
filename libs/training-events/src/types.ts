@@ -1,22 +1,21 @@
-
-import { TrainingCompletedEvent } from "./events/training-completed"
-import { TrainingCptPerformedEvent } from "./events/training-cpt-performed"
-import { TrainingCptRequestedEvent } from "./events/training-cpt-requested"
-import { TrainingCptScheduledEvent } from "./events/training-cpt-scheduled"
-import { TrainingIntentEvent } from "./events/training-intent"
-import { TrainingIntentConfirmationExpiredEvent } from "./events/training-intent-confirmation-expired"
-import { TrainingIntentConfirmationRejectedEvent } from "./events/training-intent-confirmation-rejected"
-import { TrainingIntentConfirmationRequestedEvent } from "./events/training-intent-confirmation-requested"
-import { TrainingIntentConfirmationRespondedEvent } from "./events/training-intent-confirmation-responded"
-import { TrainingMentorAssignedEvent } from "./events/training-mentor-assigned"
-import { TrainingMentorReassignedEvent } from "./events/training-mentor-reassigned"
-import { TrainingSessionPerformedEvent } from "./events/training-session-performed"
-import { TrainingSessionScheduledEvent } from "./events/training-session-scheduled"
-import { TrainingSoloPerformedEvent } from "./events/training-solo-performed"
-import { TrainingSoloRequestedEvent } from "./events/training-solo-requested"
-import { TrainingSoloScheduledEvent } from "./events/training-solo-scheduled"
-import { TrainingTestAssignedEvent } from "./events/training-test-assigned"
-import { TrainingTestCompletedEvent } from "./events/training-test-completed"
+import { TrainingCompletedEvent, TrainingCompletedEventData } from "./events/training-completed"
+import { TrainingCptPerformedEvent, TrainingCptPerformedEventData } from "./events/training-cpt-performed"
+import { TrainingCptRequestedEvent, TrainingCptRequestedEventData } from "./events/training-cpt-requested"
+import { TrainingCptScheduledEvent, TrainingCptScheduledEventData } from "./events/training-cpt-scheduled"
+import { TrainingIntentEvent, TrainingIntentEventData } from "./events/training-intent"
+import { TrainingIntentConfirmationExpiredEvent, TrainingIntentConfirmationExpiredEventData } from "./events/training-intent-confirmation-expired"
+import { TrainingIntentConfirmationRejectedEvent, TrainingIntentConfirmationRejectedEventData } from "./events/training-intent-confirmation-rejected"
+import { TrainingIntentConfirmationRequestedEvent, TrainingIntentConfirmationRequestedEventData } from "./events/training-intent-confirmation-requested"
+import { TrainingIntentConfirmationRespondedEvent, TrainingIntentConfirmationRespondedEventData } from "./events/training-intent-confirmation-responded"
+import { TrainingMentorAssignedEvent, TrainingMentorAssignedEventData } from "./events/training-mentor-assigned"
+import { TrainingMentorReassignedEvent, TrainingMentorReassignedEventData } from "./events/training-mentor-reassigned"
+import { TrainingSessionPerformedEvent, TrainingSessionPerformedEventData } from "./events/training-session-performed"
+import { TrainingSessionScheduledEvent, TrainingSessionScheduledEventData } from "./events/training-session-scheduled"
+import { TrainingSoloPerformedEvent, TrainingSoloPerformedEventData } from "./events/training-solo-performed"
+import { TrainingSoloRequestedEvent, TrainingSoloRequestedEventData } from "./events/training-solo-requested"
+import { TrainingSoloScheduledEvent, TrainingSoloScheduledEventData } from "./events/training-solo-scheduled"
+import { TrainingTestAssignedEvent, TrainingTestAssignedEventData } from "./events/training-test-assigned"
+import { TrainingTestCompletedEvent, TrainingTestCompletedEventData } from "./events/training-test-completed"
 
 export type TrainingEvent =
   | TrainingCompletedEvent
@@ -38,6 +37,26 @@ export type TrainingEvent =
   | TrainingTestCompletedEvent
   | TrainingCptRequestedEvent
 
+export type TrainingEventData =
+  | TrainingCompletedEventData
+  | TrainingCptPerformedEventData
+  | TrainingCptScheduledEventData
+  | TrainingIntentConfirmationExpiredEventData
+  | TrainingIntentConfirmationRejectedEventData
+  | TrainingIntentConfirmationRequestedEventData
+  | TrainingIntentConfirmationRespondedEventData
+  | TrainingIntentEventData
+  | TrainingMentorAssignedEventData
+  | TrainingMentorReassignedEventData
+  | TrainingSessionPerformedEventData
+  | TrainingSessionScheduledEventData
+  | TrainingSoloPerformedEventData
+  | TrainingSoloRequestedEventData
+  | TrainingSoloScheduledEventData
+  | TrainingTestAssignedEventData
+  | TrainingTestCompletedEventData
+  | TrainingCptRequestedEventData
+
 export type Member = {
   id: number
   name: string
@@ -53,8 +72,6 @@ export type TrainingStatus =
   | "AWAITING_CPT"
   | "COMPLETED"
   | "TERMINATED"
-
-
 
 export type TrainingPurpose = "acquire_rating" | "revalidate_rating" | "visiting"
 export type TestResult = "passed" | "failed"
@@ -133,7 +150,7 @@ export type Reducer<T = unknown> = (training: Training | null, event: T) => Trai
 export type IsEmitted<T = unknown> = (training: Training | null, event: T) => boolean
 
 export type TrainingEventMetadata = {
-  id: string
+  eventId: string
   emittedAt: Date
   system: string
   correlationId: string

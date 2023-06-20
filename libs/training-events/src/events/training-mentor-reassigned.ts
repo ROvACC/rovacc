@@ -2,7 +2,7 @@ import { Member, Reducer, Training, TrainingEventMetadata } from "../types";
 
 const name = 'training-mentor-reassigned'
 
-export type TrainingMentorReassignedData = {
+export type TrainingMentorReassignedEventData = {
   name: typeof name
   trainingId: string
   payload: {
@@ -11,7 +11,7 @@ export type TrainingMentorReassignedData = {
   }
 }
 
-export type TrainingMentorReassignedEvent = TrainingEventMetadata & TrainingMentorReassignedData
+export type TrainingMentorReassignedEvent = TrainingEventMetadata & TrainingMentorReassignedEventData
 
 const reducer: Reducer<TrainingMentorReassignedEvent> = (
   training: Training | null,

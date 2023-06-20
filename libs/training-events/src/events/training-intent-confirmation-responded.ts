@@ -3,13 +3,13 @@ import { Reducer, Training, TrainingEventMetadata } from "../types";
 
 const name = 'training-intent-confirmation-responded';
 
-export type TrainingIntentConfirmationRespondedData = {
+export type TrainingIntentConfirmationRespondedEventData = {
   name: typeof name
   trainingId: string
   payload: Record<string, never>
 }
 
-export type TrainingIntentConfirmationRespondedEvent = TrainingEventMetadata & TrainingIntentConfirmationRespondedData
+export type TrainingIntentConfirmationRespondedEvent = TrainingEventMetadata & TrainingIntentConfirmationRespondedEventData
 
 const reducer: Reducer<TrainingIntentConfirmationRespondedEvent> = (
   training: Training | null,
