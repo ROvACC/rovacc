@@ -37,8 +37,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-<<<<<<< HEAD
-=======
 
 .env
->>>>>>> d6e3b4f (Initial commit)
