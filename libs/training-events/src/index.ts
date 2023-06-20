@@ -1,5 +1,9 @@
 export * from './events'
+<<<<<<< HEAD
 export { reduceEvent } from './events/reducer'
+=======
+export { applyReducer } from './events/reducer'
+>>>>>>> 881533f ( #1 training events lib)
 
 export type {
   Member,
@@ -12,6 +16,7 @@ export type {
   TrainingPurpose,
   TrainingStatus,
 } from './types'
+<<<<<<< HEAD
 
 export type { TrainingCompletedEvent, TrainingCompletedEventData } from "./events/training-completed"
 export type { TrainingCptPerformedEvent, TrainingCptPerformedEventData } from "./events/training-cpt-performed"
@@ -32,3 +37,5 @@ export type { TrainingSoloScheduledEvent, TrainingSoloScheduledEventData } from 
 export type { TrainingTestAssignedEvent, TrainingTestAssignedEventData } from "./events/training-test-assigned"
 export type { TrainingTestCompletedEvent, TrainingTestCompletedEventData } from "./events/training-test-completed"
 
+=======
+>>>>>>> 881533f ( #1 training events lib)

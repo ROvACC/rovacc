@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
-import viteTsConfigPaths from 'vite-tsconfig-paths'
-import dts from 'vite-plugin-dts'
-import { joinPathFragments } from '@nx/devkit'
+import viteTsConfigPaths from 'vite-tsconfig-paths';
+import dts from 'vite-plugin-dts';
+import { joinPathFragments } from '@nx/devkit';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/training-events',
@@ -57,4 +57,4 @@ export default defineConfig({
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
-})
+});
