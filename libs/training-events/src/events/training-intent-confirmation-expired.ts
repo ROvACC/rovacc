@@ -1,5 +1,8 @@
-
-import { Reducer, Training, TrainingIntentConfirmationExpiredEvent } from "@rovacc/training-events-types";
+import {
+  Reducer,
+  Training,
+  TrainingIntentConfirmationExpiredEvent,
+} from '@rovacc/training-events-types';
 
 const name = 'training-intent-confirmation-expired';
 
@@ -13,12 +16,16 @@ const reducer: Reducer<TrainingIntentConfirmationExpiredEvent> = (
   intentConfirmation: {
     ...training?.intentConfirmation,
     expiredAt: event.emittedAt,
-  }
-})
+  },
+});
 
-const isEmitted =
-  (training: Training | null) =>
-    training && training?.intentConfirmation && !!training.intentConfirmation.expiredAt
+const isEmitted = (training: Training | null) =>
+  training &&
+  training?.intentConfirmation &&
+  !!training.intentConfirmation.expiredAt;
 
-export const trainingIntentConfirmationExpired = { name, reducer, isEmitted } as const
-
+export const trainingIntentConfirmationExpired = {
+  name,
+  reducer,
+  isEmitted,
+} as const;

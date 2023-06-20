@@ -1,5 +1,8 @@
-
-import { Reducer, Training, TrainingIntentConfirmationRespondedEvent } from "@rovacc/training-events-types";
+import {
+  Reducer,
+  Training,
+  TrainingIntentConfirmationRespondedEvent,
+} from '@rovacc/training-events-types';
 
 const name = 'training-intent-confirmation-responded';
 
@@ -13,13 +16,16 @@ const reducer: Reducer<TrainingIntentConfirmationRespondedEvent> = (
   intentConfirmation: {
     ...training?.intentConfirmation,
     respondedAt: event.emittedAt,
+  },
+});
 
-  }
-})
+const isEmitted = (training: Training | null) =>
+  training &&
+  training?.intentConfirmation &&
+  training.intentConfirmation.respondedAt;
 
-const isEmitted =
-  (training: Training | null) =>
-    training && training?.intentConfirmation && training.intentConfirmation.respondedAt
-
-export const trainingIntentConfirmationResponded = { name, reducer, isEmitted } as const
-
+export const trainingIntentConfirmationResponded = {
+  name,
+  reducer,
+  isEmitted,
+} as const;
