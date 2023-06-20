@@ -1,5 +1,5 @@
 {
-  "name": "@rovacc/source",
+  "name": "rovacc/rovacc",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
@@ -8,10 +8,10 @@
     "firebase-admin": "^11.9.0"
   },
   "devDependencies": {
-    "@nx/eslint-plugin": "16.3.2",
-    "@nx/js": "16.3.2",
-    "@nx/linter": "16.3.2",
     "@nx/node": "^16.3.2",
+    "@nx/js": "16.3.2",
+    "@nx/eslint-plugin": "16.3.2",
+    "@nx/linter": "16.3.2",
     "@nx/vite": "16.3.2",
     "@nx/workspace": "16.3.2",
     "@types/node": "18.7.1",
