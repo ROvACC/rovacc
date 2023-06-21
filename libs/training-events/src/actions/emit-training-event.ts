@@ -3,6 +3,7 @@ import { TrainingEvent, TrainingEventData } from "../types";
 import { SYSTEM_ID, TRAINING_COLLECTION, TRAINING_EVENTS_SUBCOLLECTION } from '../config'
 import { getFirestore } from "firebase-admin/firestore";
 import { FirestoreNotInitialzedException } from "../exception/firestore-not-initialized";
+import { getDatabaseCollection } from '@rovacc/clients'
 
 export const emitTrainingEvent = async (eventData: TrainingEventData, correlationId: string): Promise<void> => {
 
@@ -19,7 +20,7 @@ export const emitTrainingEvent = async (eventData: TrainingEventData, correlatio
   if (!db) {
     throw new FirestoreNotInitialzedException()
   }
-  const trainingCollection = db.collection(TRAINING_COLLECTION)
+  const trainingCollection = getDatabaseCollection(TRAINING_COLLECTION)
 
   const training = await trainingCollection.doc(trainingId).get()
   if (!training.exists) {
