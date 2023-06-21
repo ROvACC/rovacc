@@ -1,17 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
-import {
-  Training,
-  TrainingEvent,
-  TrainingEventData,
-} from '@rovacc/training-events-types';
+import { TrainingEvent, TrainingEventData } from '../types';
 import {
   SYSTEM_ID,
   TRAINING_COLLECTION,
   TRAINING_EVENTS_SUBCOLLECTION,
 } from '../config';
-import { getDatabaseCollection } from '@rovacc/clients';
-import { isEmitted, reduceEvent } from '../events';
-import { getDate } from '../helpers/get-date';
+import { getFirestore } from 'firebase-admin/firestore';
+import { FirestoreNotInitialzedException } from '../exception/firestore-not-initialized';
 
 export const emitTrainingEvent = async (
   eventData: TrainingEventData,
@@ -31,7 +26,11 @@ export const emitTrainingEvent = async (
     return training;
   }
 
-  const trainingCollection = getDatabaseCollection(TRAINING_COLLECTION);
+  const db = getFirestore();
+  if (!db) {
+    throw new FirestoreNotInitialzedException();
+  }
+  const trainingCollection = db.collection(TRAINING_COLLECTION);
 
   const trainingObj = await trainingCollection.doc(trainingId).get();
   if (!trainingObj.exists) {
