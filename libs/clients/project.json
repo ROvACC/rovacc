@@ -6,15 +6,21 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/clients"
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/clients"],
-      "dependsOn": ["^test-firebase-docker-up"],
+      "outputs": [
+        "coverage/libs/clients"
+      ],
+      "dependsOn": [
+        "^test-firebase-docker-up"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/clients"
@@ -22,9 +28,13 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/clients/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/clients/**/*.ts"
+        ]
       }
     },
     "test-firebase-docker-up": {

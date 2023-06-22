@@ -16,3 +16,4 @@ export { trainingSoloRequested } from "./training-solo-requested"
 export { trainingSoloScheduled } from "./training-solo-scheduled"
 export { trainingTestAssigned } from "./training-test-assigned";
 export { trainingTestCompleted } from "./training-test-completed";
+export { reducer, isEmitted, reduceEvent } from "./reducer";

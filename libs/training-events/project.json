@@ -6,14 +6,21 @@
   "targets": {
     "build": {
       "executor": "@nx/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/libs/training-events"
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["coverage/libs/training-events"],
+      "dependsOn": [
+        "pre-test"
+      ],
+      "outputs": [
+        "coverage/libs/training-events"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/libs/training-events"
@@ -21,10 +28,20 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["libs/training-events/**/*.ts"]
+        "lintFilePatterns": [
+          "libs/training-events/**/*.ts"
+        ]
       }
+    },
+    "pretest": {
+      "command": "docker-compose -f libs/training-events/docker-compose.yml up -d"
+    },
+    "posttest": {
+      "command": "docker-compose -f libs/training-events/docker-compose.yml down"
     }
   },
   "tags": []

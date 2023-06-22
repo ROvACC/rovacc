@@ -41,13 +41,13 @@ const events = [
 
 type Names = typeof events[number]['name']
 
-const { reducer, isEmitted } = events.reduce(
+export const { reducer, isEmitted } = events.reduce(
   (acc, event) => ({
     reducer: { ...acc.reducer, [event.name]: event.reducer },
     isEmitted: { ...acc.isEmitted, [event.name]: event.isEmitted }
   }), { reducer: {} as Record<Names, Reducer>, isEmitted: {} as Record<Names, IsEmitted> })
 
-export const applyReducer = (training: Training | null, event: TrainingEvent): Training | null => {
+export const reduceEvent = (training: Training | null, event: TrainingEvent): Training | null => {
   if (!reducer[event.name]) {
     console.log('Event not found', event)
     return training

@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  training_events_firebase:
+    image: matthewkrupnik/docker-firestore-emulator-with-ui
+    ports:
+      - "8080:8080"
+      - "4000:4000"
+  # trainingeevents_firebase:
+  #   build:
+  #     dockerfile: ./Dockerfile.firebase
+  #     context: .
+  #   ports:
+  #     - "8080:8080"
+  #     - "4000:4000"
