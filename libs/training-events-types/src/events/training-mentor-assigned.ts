@@ -7,7 +7,7 @@ export type TrainingMentorAssignedEventData = {
   trainingId: string
   payload: {
     mentor: Member
-    assigned_by: Member
+    assignedBy: Member
   }
 }
 

@@ -1,17 +1,7 @@
 
-import { Reducer, Training, TrainingEventMetadata } from "../types";
+import { Reducer, Training, TrainingSoloScheduledEvent } from "@rovacc/training-events-types";
 
 const name = 'training-solo-scheduled'
-
-export type TrainingSoloScheduledEventData = {
-  trainingId: string,
-  name: typeof name
-  payload: {
-    scheduledAt: Date
-  }
-}
-
-export type TrainingSoloScheduledEvent = TrainingEventMetadata & TrainingSoloScheduledEventData
 
 const reducer: Reducer<TrainingSoloScheduledEvent> = (
   training: Training | null,

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, it, expect } from "vitest";
-import { TrainingEventData } from "../types";
+import { TrainingEventData } from "@rovacc/training-events-types";
 
 import { emitTrainingEvent } from "./emit-training-event";
 import { deleteCollection } from "@rovacc/test-helpers";
@@ -27,7 +27,7 @@ describe('emitTrainingEvent', () => {
     vi.restoreAllMocks()
   })
 
-  it('should emit the event correctly', async () => {
+  it('should emit the event correctly and create the empty training object', async () => {
     const eventData: TrainingEventData = {
       trainingId: TRAINING_ID,
       name: 'training-intent',
@@ -62,37 +62,45 @@ describe('emitTrainingEvent', () => {
     })
   })
 
-  it('should emit the event', async () => {
-    const eventData: TrainingEventData = {
-      trainingId: TRAINING_ID,
-      name: 'training-intent',
-      payload: {
-        student: 1364858,
-        rating: 5,
-        purpose: 'acquire_rating'
-      }
-    }
+  it('should emit the event and not alter the training object', async () => {
 
-    const reducedTraining = await emitTrainingEvent(eventData, null, 'correlationId')
-
-    expect(reducedTraining).toEqual({
-      trainingId: TRAINING_ID,
-      status: 'QUEUED',
+    const trainingCollection = getDatabaseCollection('training')
+    await trainingCollection.doc(TRAINING_ID).set({
       purpose: 'acquire_rating',
       rating: 5,
       student: 1364858,
       requestedAt: DATE
     })
-    const trainingCollection = getDatabaseCollection('training')
+    await trainingCollection.doc(TRAINING_ID).collection('events').doc('event-id').set({
+      const eventData: TrainingEventData = {
+        trainingId: TRAINING_ID,
+        name: 'training-test-completed',
+        payload: {
+          passed: true,
+          result: 'passed',
+          willExpireAt: new Date()
+        }
+      }
+
+    const reducedTraining = await emitTrainingEvent(eventData, null, 'correlationId')
+
+    expect(reducedTraining).toEqual({
+        trainingId: TRAINING_ID,
+        status: 'QUEUED',
+        purpose: 'acquire_rating',
+        rating: 5,
+        student: 1364858,
+        requestedAt: DATE
+      })
     const event = await trainingCollection.doc(TRAINING_ID).collection('events').doc(EVENT_ID).get()
     expect(event.data()).toEqual({
-      eventId: EVENT_ID,
-      emittedAt: Timestamp.fromDate(DATE),
-      system: 'rovacc-system-id',
-      trainingId: TRAINING_ID,
-      payload: { student: 1364858, purpose: 'acquire_rating', rating: 5 },
-      name: 'training-intent',
-      correlationId: 'correlationId'
-    })
+        eventId: EVENT_ID,
+        emittedAt: Timestamp.fromDate(DATE),
+        system: 'rovacc-system-id',
+        trainingId: TRAINING_ID,
+        payload: { student: 1364858, purpose: 'acquire_rating', rating: 5 },
+        name: 'training-intent',
+        correlationId: 'correlationId'
+      })
   })
 })

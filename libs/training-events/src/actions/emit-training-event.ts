@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { Training, TrainingEvent, TrainingEventData } from "../types";
+import { Training, TrainingEvent, TrainingEventData } from "@rovacc/training-events-types";
 import { SYSTEM_ID, TRAINING_COLLECTION, TRAINING_EVENTS_SUBCOLLECTION } from '../config'
 import { getDatabaseCollection } from '@rovacc/clients'
 import { isEmitted, reduceEvent } from "../events";

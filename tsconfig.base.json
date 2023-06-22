@@ -17,7 +17,10 @@
     "paths": {
       "@rovacc/clients": ["libs/clients/src/index.ts"],
       "@rovacc/test-helpers": ["libs/test-helpers/src/index.ts"],
-      "@rovacc/training-events": ["libs/training-events/src/index.ts"]
+      "@rovacc/training-events": ["libs/training-events/src/index.ts"],
+      "@rovacc/training-events-types": [
+        "libs/training-events-types/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

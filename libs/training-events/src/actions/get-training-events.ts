@@ -1,5 +1,5 @@
 import { getDatabaseCollection } from "@rovacc/clients";
-import { Training, TrainingEvent } from "../types";
+import { Training, TrainingEvent } from "@rovacc/training-events-types";
 import { TRAINING_COLLECTION, TRAINING_EVENTS_SUBCOLLECTION } from "../config";
 import { TrainingNotFound } from "../exception/training-not-found";
 

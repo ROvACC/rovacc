@@ -1,4 +1,4 @@
-import { IsEmitted, Reducer, Training, TrainingEvent } from "../types";
+import { IsEmitted, Reducer, Training, TrainingEvent } from "@rovacc/training-events-types";
 import { trainingCompleted } from "./training-completed";
 import { trainingCptPerformed } from "./training-cpt-performed";
 import { trainingCptRequested } from "./training-cpt-requested";

@@ -1,14 +1,6 @@
-import { Reducer, Training, TrainingEventMetadata } from "../types";
+import { Reducer, Training, TrainingIntentConfirmationRejectedEvent } from "@rovacc/training-events-types";
 
 const name = 'training-intent-confirmation-rejected';
-
-export type TrainingIntentConfirmationRejectedEventData = {
-  name: typeof name
-  trainingId: string
-  payload: Record<string, never>
-}
-
-export type TrainingIntentConfirmationRejectedEvent = TrainingEventMetadata & TrainingIntentConfirmationRejectedEventData
 
 const reducer: Reducer<TrainingIntentConfirmationRejectedEvent> = (
   training: Training | null,

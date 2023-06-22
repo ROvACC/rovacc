@@ -1,17 +1,6 @@
-import { Member, Reducer, Training, TrainingEventMetadata } from "../types";
+import { Member, Reducer, Training, TrainingMentorAssignedEvent } from "@rovacc/training-events-types";
 
 const name = 'training-mentor-assigned'
-
-export type TrainingMentorAssignedEventData = {
-  name: typeof name
-  trainingId: string
-  payload: {
-    mentor: Member
-    assigned_by: Member
-  }
-}
-
-export type TrainingMentorAssignedEvent = TrainingEventMetadata & TrainingMentorAssignedEventData
 
 const reducer: Reducer<TrainingMentorAssignedEvent> = (
   training: Training | null,
@@ -23,7 +12,7 @@ const reducer: Reducer<TrainingMentorAssignedEvent> = (
   mentor: {
     member: event.payload.mentor,
     assignedAt: event.emittedAt,
-    assignedBy: event.payload.assigned_by,
+    assignedBy: event.payload.assignedBy,
   }
 })
 
