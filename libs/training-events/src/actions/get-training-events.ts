@@ -40,7 +40,6 @@ export const getTraining = async (trainingId: string): Promise<Training | undefi
   return training.data() as Training
 }
 
-
 export const tryGetTraining = async (trainingId: string): Promise<Training> => {
   const training = await getTraining(trainingId)
   if (!training) {
