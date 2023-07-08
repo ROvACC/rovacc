@@ -1,12 +1,12 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
-import viteTsConfigPaths from 'vite-tsconfig-paths'
-import dts from 'vite-plugin-dts'
-import { joinPathFragments } from '@nx/devkit'
+import viteTsConfigPaths from 'vite-tsconfig-paths';
+import dts from 'vite-plugin-dts';
+import { joinPathFragments } from '@nx/devkit';
 
 export default defineConfig({
-  cacheDir: '../../node_modules/.vite/clients',
+  cacheDir: '../../node_modules/.vite/training-events',
 
   plugins: [
     dts({
@@ -35,7 +35,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',
-      name: 'clients',
+      name: 'training-events',
       fileName: 'index',
       // Change this to the formats you want to support.
       // Don't forgot to update your package.json as well.
@@ -49,11 +49,12 @@ export default defineConfig({
 
   test: {
     globals: true,
+    testTimeout: 20000,
     cache: {
       dir: '../../node_modules/.vitest',
     },
-    environment: 'jsdom',
     setupFiles: ['./test/setup-test.ts'],
+    environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
   },
-})
+});

@@ -1,7 +1,7 @@
 {
-  "name": "clients",
+  "name": "training-events",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/clients/src",
+  "sourceRoot": "libs/training-events/src",
   "projectType": "library",
   "targets": {
     "build": {
@@ -10,20 +10,20 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/libs/clients"
+        "outputPath": "dist/libs/training-events"
       }
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "coverage/libs/clients"
-      ],
       "dependsOn": [
-        "^test-firebase-docker-up"
+        "pre-test"
+      ],
+      "outputs": [
+        "coverage/libs/training-events"
       ],
       "options": {
         "passWithNoTests": true,
-        "reportsDirectory": "../../coverage/libs/clients"
+        "reportsDirectory": "../../coverage/libs/training-events"
       }
     },
     "lint": {
@@ -33,12 +33,15 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/clients/**/*.ts"
+          "libs/training-events/**/*.ts"
         ]
       }
     },
-    "test-firebase-docker-up": {
-      "command": "docker build -f libs/clients/Dockerfile . -t clients"
+    "pretest": {
+      "command": "docker-compose -f libs/training-events/docker-compose.yml up -d"
+    },
+    "posttest": {
+      "command": "docker-compose -f libs/training-events/docker-compose.yml down"
     }
   },
   "tags": []

@@ -49,10 +49,6 @@
               }
             ]
           }
-        ],
-        "array-element-newline": [
-          "error",
-          "consistent"
         ]
       }
     },
@@ -78,4 +74,3 @@
     }
   ]
 }
-
