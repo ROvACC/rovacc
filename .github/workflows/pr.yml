@@ -2,7 +2,6 @@ name: Run on PR
 on:
   pull_request:
 
-
 jobs:
   main:
     runs-on: ubuntu-latest
@@ -13,6 +12,9 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: 'master'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
       - run: npm ci
 
       - run: npx nx format:check

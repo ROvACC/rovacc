@@ -2,9 +2,9 @@ name: Build and deploy
 on:
   pull_request:
     types:
-      - "closed"
+      - 'closed'
     branches:
-      - "master"
+      - 'master'
 
 jobs:
   main:
@@ -16,6 +16,9 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: 'master'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
       - run: npm ci
 
       - run: npx nx format:check
