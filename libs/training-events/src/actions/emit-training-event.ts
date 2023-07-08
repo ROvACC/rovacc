@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { TrainingEvent, TrainingEventData } from '../types';
+import { TrainingEvent, TrainingEventData, Training } from '@rovacc/training-events-types';
 import {
   SYSTEM_ID,
   TRAINING_COLLECTION,
@@ -7,6 +7,8 @@ import {
 } from '../config';
 import { getFirestore } from 'firebase-admin/firestore';
 import { FirestoreNotInitialzedException } from '../exception/firestore-not-initialized';
+import { getDate } from '../helpers/get-date';
+import { isEmitted, reduceEvent } from '../events';
 
 export const emitTrainingEvent = async (
   eventData: TrainingEventData,
