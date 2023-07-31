@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase-admin";
-import { beforeAll } from "vitest";
+import { initializeApp } from 'firebase-admin';
+import { beforeAll } from 'vitest';
 
 beforeAll(() => {
-  initializeApp()
-})
+  console.log('initializing app');
+  initializeApp();
+});
